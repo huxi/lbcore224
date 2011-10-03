@@ -1,5 +1,9 @@
 apply plugin: 'java'
 
+// adding 'clean' here disables the otherwise intelligent detection if tests
+// need to be re-run.
+defaultTasks 'clean', 'build'
+
 task wrapper(type: Wrapper) {
     gradleVersion = '1.0-milestone-4'
 }
