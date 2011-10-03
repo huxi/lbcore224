@@ -1,0 +1,19 @@
+apply plugin: 'java'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.0-milestone-4'
+}
+
+repositories {
+   mavenCentral()
+   flatDir(dirs: file('lib'))
+   // lib contains zookeeper files from http://svn.apache.org/repos/asf/zookeeper/trunk/ rev 1178579.
+}
+
+dependencies {
+	testCompile 'org.slf4j:slf4j-api:1.6.2'
+	testCompile 'ch.qos.logback:logback-classic:0.9.30'
+	testCompile 'junit:junit:4.10'
+	testCompile ':zookeeper:3.4.0'
+	testCompile ':zookeeper-test:3.4.0'
+}
