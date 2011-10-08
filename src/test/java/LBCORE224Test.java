@@ -46,5 +46,12 @@ public class LBCORE224Test
 			qU.tearDown();
 		}
 	}
+	
+	@Test
+	public void justSomeStackTrace()
+	{
+		RuntimeException ex=new RuntimeException("Foo!");
+		ex.printStackTrace();
+	}
 }
 
