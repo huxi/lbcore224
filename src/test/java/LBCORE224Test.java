@@ -11,7 +11,6 @@ import java.io.File;
 public class LBCORE224Test 
 {
 	private static final String BUILT_TEST_DIR_PROP_KEY = "build.test.dir";
-	private QuorumUtil qU;
 	
 	@Rule
 	public TemporaryFolder tempFolder = new TemporaryFolder();
@@ -21,24 +20,30 @@ public class LBCORE224Test
 	{
 		File tempDir = tempFolder.newFolder("foo");
 		System.setProperty(BUILT_TEST_DIR_PROP_KEY, tempDir.getAbsolutePath());
-		qU = new QuorumUtil(1);
 	}
 	
 	@After
 	public void after() throws Exception 
 	{
-		qU.tearDown();
 		System.clearProperty(BUILT_TEST_DIR_PROP_KEY);
 	}
 
 	@Test
 	public void shouldNotThrowIllegalMonitorStateException () throws Exception
 	{
-		for (int i = 0; i < 10; i++) 
+		QuorumUtil qU = new QuorumUtil(1);
+		try
 		{
-			qU.startQuorum();
-			qU.shutdownAll();
-			System.err.println("iteration "+i);
+			for (int i = 0; i < 10; i++) 
+			{
+				qU.startQuorum();
+				qU.shutdownAll();
+				System.err.println("iteration "+i);
+			}
+		}
+		finally
+		{
+			qU.tearDown();
 		}
 	}
 }
