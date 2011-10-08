@@ -6,6 +6,10 @@ apply plugin: 'eclipse'
 // need to be re-run.
 defaultTasks 'clean', 'build'
 
+def compilerArgs = ['-Xlint:unchecked', '-Xlint:deprecation', '-g']
+compileJava.options.compilerArgs = compilerArgs
+compileTestJava.options.compilerArgs = compilerArgs
+
 task wrapper(type: Wrapper) {
     gradleVersion = '1.0-milestone-5-20111008000006+0200'
 }
