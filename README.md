@@ -6,6 +6,8 @@ on either Logback or ZooKeeper.
 
 Something seems to be broken concerning locks in general and/or ReentrantReadWriteLock.
 
+The entry in the Java Bug Database is (or rather: will be) [#7099601](http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=7099601).
+
 ## Background Information
 The files contained in the `lib` were created based on
 http://svn.apache.org/repos/asf/zookeeper/trunk/ rev 1178579.
