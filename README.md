@@ -70,3 +70,30 @@ This will execute the test. If the build does not fail it means that this bug di
 
 ### Eclipse
 Execute either `gradlew.bat eclipse` (windows) or `./gradlew eclipse` (anything else) to generate Eclipse project files.
+
+## First hints...
+
+Given that testing with Gradle works but the identical test fails in both Maven and
+IDEA, this issue may be related to some difference in the way the tests are executed.
+
+### Part of Gradle stacktrace
+
+    at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+    at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+    at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:51)
+    at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:63)
+    at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:49)
+
+### Part of IDEA stacktrace
+
+    at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+    at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+    at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+    at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:71)
+
+### Part of Maven stacktrace
+
+    at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+    at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+    at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:35)
+
