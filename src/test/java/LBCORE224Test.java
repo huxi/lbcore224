@@ -2,6 +2,7 @@ import org.apache.zookeeper.test.QuorumUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.rules.TemporaryFolder;
 import java.io.File;
@@ -47,6 +48,7 @@ public class LBCORE224Test
 		}
 	}
 	
+	@Ignore
 	@Test
 	public void justSomeStackTrace()
 	{
